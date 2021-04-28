@@ -1,0 +1,17 @@
+<h1 class="text-center">Maliha Textile</h1>
+
+<table class="table table-info">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dob</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let student of students">
+    <td>{{student.name}}</td>
+    <td>{{student.dateOfBirth}}</td>
+  </tr>
+  </tbody>
+  <tfoot></tfoot>
+</table>

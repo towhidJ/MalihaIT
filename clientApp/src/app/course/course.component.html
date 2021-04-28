@@ -1,1 +1,19 @@
-<p>course works!</p>
+<h1 class="text-center">Maliha Textile</h1>
+
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Seat</th>
+    <th>Fee</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let student of courses">
+    <td>{{student.title}}</td>
+    <td>{{student.seatCount}}</td>
+    <td>{{student.fee}}</td>
+  </tr>
+  </tbody>
+  <tfoot></tfoot>
+</table>
