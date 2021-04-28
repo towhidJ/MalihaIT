@@ -10,22 +10,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MalihaIT.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MalihaIT
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<StudentContext>(option =>
+                option.UseSqlServer(_config.GetConnectionString("ConnStr")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
