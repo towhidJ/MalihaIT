@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MalihaIT.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace MalihaIT
 {
@@ -29,6 +30,12 @@ namespace MalihaIT
             services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MalihaIT", Version = "v1" });
+            });
+
             services.AddDbContext<StudentContext>(option =>
                 option.UseSqlServer(_config.GetConnectionString("ConnStr")));
         }
@@ -45,6 +52,12 @@ namespace MalihaIT
 
             app.UseCors();
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("v1/swagger.json", "MalihaIt v1");
+            });
 
             app.UseAuthorization();
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using MalihaIT.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,17 +16,20 @@ namespace MalihaIT.Controllers
     public class StudentRegistrationsController : ControllerBase
     {
         private readonly StudentContext _context;
-
-        public StudentRegistrationsController(StudentContext context)
+        private readonly IMapper _mapper;
+        public StudentRegistrationsController(StudentContext context ,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/StudentRegistrations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StudentRegistration>>> GetStudentRegistrations()
+        public async Task<IReadOnlyList<StudentRegistrationToReturnDto>> GetStudentRegistrations()
         {
-            return await _context.StudentRegistrations.ToListAsync();
+            var st = await _context.StudentRegistrations.Include(s=>s.Student).Include(c=>c.Course).ToListAsync();
+            var studentDtos = _mapper.Map<IReadOnlyList<StudentRegistration>, IReadOnlyList<StudentRegistrationToReturnDto>>(st);
+            return studentDtos;
         }
 
         // GET: api/StudentRegistrations/5
