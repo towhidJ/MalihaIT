@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MalihaIT.Data.Migrations
 {
-    public partial class InitalCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,11 +11,11 @@ namespace MalihaIT.Data.Migrations
                 name: "Course",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SeatCount = table.Column<int>(type: "int", nullable: false),
-                    Fee = table.Column<int>(type: "int", nullable: false)
+                    Title = table.Column<string>(nullable: true),
+                    SeatCount = table.Column<int>(nullable: false),
+                    Fee = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,10 +26,10 @@ namespace MalihaIT.Data.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Name = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,10 +40,10 @@ namespace MalihaIT.Data.Migrations
                 name: "StudentRegistrations",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(type: "int", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
-                    EnrollDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsPaymentComplete = table.Column<bool>(type: "bit", nullable: false)
+                    StudentId = table.Column<int>(nullable: false),
+                    CourseId = table.Column<int>(nullable: false),
+                    EnrollDate = table.Column<DateTime>(nullable: false),
+                    IsPaymentComplete = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
