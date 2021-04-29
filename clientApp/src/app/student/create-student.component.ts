@@ -4,6 +4,7 @@ import {StudentService} from './student.service';
 import {IStudent} from '../shared/models/student';
 import {ActivatedRoute, Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-create-student',
   templateUrl: './create-student.component.html',
@@ -15,6 +16,7 @@ export class CreateStudentComponent implements OnInit {
   student = new IStudent();
   header: string;
   id: number;
+
   constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,9 +33,7 @@ export class CreateStudentComponent implements OnInit {
     }
   }
 
-  saveStudent(studentForm: NgForm): void {
-    console.log(studentForm.value);
-  }
+
 
 
   // tslint:disable-next-line:typedef
@@ -42,9 +42,11 @@ export class CreateStudentComponent implements OnInit {
     if (this.isAddMode)
     {
       this.addStudent();
+
     }else {
       this.editStudent();
     }
+    this.router.navigate(['/']);
   }
   // tslint:disable-next-line:typedef
   addStudent() {
@@ -60,5 +62,7 @@ export class CreateStudentComponent implements OnInit {
         console.log(data);
       });
   }
+
+
 
 }

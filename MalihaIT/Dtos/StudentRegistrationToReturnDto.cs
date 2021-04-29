@@ -12,6 +12,6 @@ namespace MalihaIT.Dtos
         public DateTime EnrollDate { get; set; }
         public bool IsPaymentComplete { get; set; }
         public string StudentName { get; set; }
-        public string CourseName { get; set; }
+        public string? CourseName { get; set; }
     }
 }

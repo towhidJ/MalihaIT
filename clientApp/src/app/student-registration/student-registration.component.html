@@ -7,6 +7,7 @@
     <th>Course Title</th>
     <th>Enroll Date</th>
     <th>Payment Status</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
     <td>{{stReg.enrollDate}}</td>
     <td *ngIf="stReg.isPaymentComplete===true" class="text-success">Paid</td>
     <td *ngIf="stReg.isPaymentComplete===false" class="text-danger">Unpaid</td>
+    <td><button class="btn btn-danger" (click)="deleteEnroll(stReg)"><i class="fa fa-trash"></i></button></td>
   </tr>
   </tbody>
   <tfoot></tfoot>

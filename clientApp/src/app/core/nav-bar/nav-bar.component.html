@@ -131,7 +131,7 @@
           </div>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a [routerLink]="['add-course']"class="nav-link px-3">
             <span class="me-2"><i class="bi bi-graph-up"></i></span>
             <span>Add Course</span>
           </a>
@@ -142,6 +142,26 @@
             <span>Course List</span>
           </a>
         </li>
+
+
+        <li>
+          <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            Student Registration
+          </div>
+        </li>
+        <li>
+          <a [routerLink]="['enroll']" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-graph-up"></i></span>
+            <span>Enroll Course</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['stdReg']" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-table"></i></span>
+            <span>Enroll List</span>
+          </a>
+        </li>
+
       </ul>
     </nav>
   </div>

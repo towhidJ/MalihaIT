@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentRegistrationComponent } from './student-registration.component';
+import { CreateStudentRegistrationComponent } from './create-student-registration.component';
+import {FormsModule} from '@angular/forms';
 
 
 
 @NgModule({
     declarations: [
-        StudentRegistrationComponent
+        StudentRegistrationComponent,
+        CreateStudentRegistrationComponent
     ],
     exports: [
         StudentRegistrationComponent
     ],
-    imports: [
-        CommonModule
-    ]
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
 })
 export class StudentRegistrationModule { }

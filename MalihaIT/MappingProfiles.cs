@@ -14,7 +14,9 @@ namespace MalihaIT
         {
             CreateMap<StudentRegistration, StudentRegistrationToReturnDto>()
                 .ForMember(d => d.StudentName, o => o.MapFrom(s => s.Student.Name))
-                .ForMember(d => d.CourseName, o => o.MapFrom(s => s.Course.Title));
+                .ForMember(d => d.CourseName, o => o.MapFrom(s => s.Course.Title)); 
+            
+
         }
     }
 }

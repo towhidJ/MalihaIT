@@ -34,16 +34,17 @@ namespace MalihaIT.Controllers
 
         // GET: api/StudentRegistrations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<StudentRegistration>> GetStudentRegistration(int id)
+        public async Task<ActionResult<StudentRegistrationToReturnDto>> GetStudentRegistration(int id)
         {
             var studentRegistration = await _context.StudentRegistrations.FindAsync(id);
+            var studentDtos = _mapper.Map<StudentRegistration,StudentRegistrationToReturnDto>(studentRegistration);
 
             if (studentRegistration == null)
             {
                 return NotFound();
             }
 
-            return studentRegistration;
+            return studentDtos;
         }
 
         
@@ -76,35 +77,37 @@ namespace MalihaIT.Controllers
             return NoContent();
         }
 
-        
+
         [HttpPost]
-        public async Task<ActionResult<StudentRegistration>> PostStudentRegistration(StudentRegistration studentRegistration)
+        public async Task<ActionResult> PostStudentRegistration(StudentRegistration studentRegistration)
         {
             _context.StudentRegistrations.Add(studentRegistration);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (StudentRegistrationExists(studentRegistration.StudentId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _context.SaveChangesAsync();
             return CreatedAtAction("GetStudentRegistration", new { id = studentRegistration.StudentId }, studentRegistration);
         }
 
+
+        //[HttpPost("postData")]
+        //public async Task<IActionResult> postData([FromBody] StudentRegistrationToReturnDto studentD)
+        //{
+        //    StudentRegistration student = new StudentRegistration
+        //    {
+        //        StudentId = studentD.StudentId,
+        //        CourseId = studentD.CourseId,
+        //        EnrollDate = studentD.EnrollDate,
+        //        IsPaymentComplete = studentD.IsPaymentComplete
+        //    };
+        //    _context.StudentRegistrations.Add(student);
+        //    await _context.SaveChangesAsync();
+        //    return Ok("Success");
+        //}
+
+
         // DELETE: api/StudentRegistrations/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<StudentRegistration>> DeleteStudentRegistration(int id)
+        public async Task<ActionResult<StudentRegistration>> DeleteStudentRegistration(int sid, int cId)
         {
-            var studentRegistration = await _context.StudentRegistrations.FindAsync(id);
+            var studentRegistration = await _context.StudentRegistrations.Where(c=>c.StudentId==sid && c.CourseId==cId ).FirstOrDefaultAsync();
             if (studentRegistration == null)
             {
                 return NotFound();
