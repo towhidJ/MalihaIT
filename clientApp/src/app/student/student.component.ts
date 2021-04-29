@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {StudentService} from './student.service';
 import {IStudent} from '../shared/models/student';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ServiceeService} from '../servicee/servicee.service';
+
 
 @Component({
   selector: 'app-student',
@@ -11,10 +13,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class StudentComponent implements OnInit {
   students: IStudent[];
   // tslint:disable-next-line:variable-name
-  constructor(private studentService: StudentService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private studentService: StudentService, private previousRouteService: ServiceeService , private _route: ActivatedRoute, private _router: Router) { }
 
+  // @ts-ignore
   ngOnInit(): void {
+    if (this.previousRouteService.getPreviousUrl()) {
+      location.reload();
+    }
     this.getStudents();
+
   }
 
   // tslint:disable-next-line:typedef
