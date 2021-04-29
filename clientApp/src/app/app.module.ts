@@ -9,6 +9,8 @@ import {CourseModule} from './course/course.module';
 import {StudentRegistrationModule} from './student-registration/student-registration.module';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import {bsDatepickerReducer} from 'ngx-bootstrap/datepicker/reducer/bs-datepicker.reducer';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {AppRoutingModule} from './app-routing.module';
     CourseModule,
     StudentRegistrationModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

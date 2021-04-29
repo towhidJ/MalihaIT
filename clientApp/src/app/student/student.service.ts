@@ -21,4 +21,23 @@ export class StudentService {
   addStudent(student: IStudent): Observable<any> {
     return this.http.post(this.baseUrl + 'students', student);
   }
+
+  // tslint:disable-next-line:typedef
+  deleteStudent(id)
+  {
+    return this.http.delete(this.baseUrl + 'students/' + id);
+  }
+
+
+  // tslint:disable-next-line:typedef
+  updateStudent(id: number, student: IStudent)
+  {
+    const endpoint = this.baseUrl + 'students/' + student.id;
+    return this.http.put(endpoint, student);
+  }
+
+  // tslint:disable-next-line:typedef
+  onGetStudent(id: number) {
+    return this.http.get<IStudent>(this.baseUrl + 'students/' + id);
+  }
 }

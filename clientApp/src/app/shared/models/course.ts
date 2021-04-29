@@ -1,4 +1,4 @@
-export interface ICourse {
+export class ICourse {
   id: number;
   title: string;
   seatCount: number;

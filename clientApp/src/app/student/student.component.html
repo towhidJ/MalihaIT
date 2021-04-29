@@ -5,12 +5,14 @@
   <tr>
     <th>Name</th>
     <th>Dob</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let student of students">
     <td>{{student.name}}</td>
-    <td>{{student.dateOfBirth}}</td>
+    <td>{{student.dateOfBirth | date:'dd-MM-yyyy'}}</td>
+    <td><button class="btn btn-danger" (click)="deleteStudent(student)"><i class="fa fa-trash"></i></button>|<button (click)="updateStudent(student)" class="btn btn-primary"><i class="fa fa-edit "></i></button></td>
   </tr>
   </tbody>
   <tfoot></tfoot>

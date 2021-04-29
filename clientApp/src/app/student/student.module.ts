@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { StudentComponent } from './student.component';
 import { CreateStudentComponent } from './create-student.component';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
 
@@ -16,7 +18,9 @@ import {FormsModule} from '@angular/forms';
   ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        RouterModule,
+      BsDatepickerModule.forRoot(),
     ]
 })
 export class StudentModule { }

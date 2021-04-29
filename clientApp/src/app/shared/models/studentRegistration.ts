@@ -1,4 +1,4 @@
-export interface IStudentReg {
+export class IStudentReg {
   studentId: number;
   courseId: number;
   enrollDate: Date;

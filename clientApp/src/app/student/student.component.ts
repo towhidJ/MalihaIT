@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {StudentService} from './student.service';
 import {IStudent} from '../shared/models/student';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -9,7 +10,8 @@ import {IStudent} from '../shared/models/student';
 })
 export class StudentComponent implements OnInit {
   students: IStudent[];
-  constructor(private studentService: StudentService) { }
+  // tslint:disable-next-line:variable-name
+  constructor(private studentService: StudentService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
     this.getStudents();
@@ -23,5 +25,18 @@ export class StudentComponent implements OnInit {
     }, error => {
       console.log(error);
     } );
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteStudent(student: IStudent) {
+    this.studentService.deleteStudent(student.id).subscribe(response => {
+      alert('Delete Success');
+      this.getStudents();
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  updateStudent(student: IStudent) {
+    this._router.navigate(['/edit', student.id]);
   }
 }
