@@ -1,7 +1,7 @@
 <form #studentRegForm=ngForm class="row g-3" (ngSubmit)="onSubmit()">
 
 
-  <select  name="student" id="StudentId" class="custom-select mb-3" [(ngModel)]="studentReg.studentId">
+  <select  name="student" id="StudentId" class="form-select" [(ngModel)]="studentReg.studentId">
     <option
       *ngFor="let st of students"
       [ngValue]="st.id"
@@ -10,7 +10,7 @@
     </option>
   </select>
 
-  <select  name="CourseId" id="CourseId" class="custom-select mb-3" [(ngModel)]="studentReg.courseId" >
+  <select  name="CourseId" id="CourseId" class="form-select" [(ngModel)]="studentReg.courseId" >
     <option
       *ngFor="let st of courses"
       [ngValue]="st.id"
