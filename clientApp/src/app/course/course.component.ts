@@ -17,9 +17,10 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.previousRouteService.getPreviousUrl()) {
+
+      this.getCourses();
       location.reload();
     }
-    this.getCourses();
   }
 
   // tslint:disable-next-line:typedef

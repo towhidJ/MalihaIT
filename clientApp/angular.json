@@ -92,9 +92,9 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/jquery/dist/jquery.js",
               "./src/assets/Js/dataTables.bootstrap5.min.js",
               "./src/assets/Js/jquery.dataTables.min.js",
-              "./src/assets/Js/jquery-3.5",
               "./src/assets/Js/jquery-plugin-collection.js",
               "./src/assets/Js/bootstrap.bundle.min.js"
             ]
